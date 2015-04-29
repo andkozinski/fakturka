@@ -1,0 +1,314 @@
+                                                            07-04-2006
+  PROJEKT "FIT-FAMA"
+==================================================================================================================================
+
+  Opis typów pól używanych w tabelach
+----------------------------------------------------------------------------------------------------------------------------------
+ Typ pola  | Rozmiar   |                       Opis                       
+___________|_w_bajtach_|__________________________________________________
+ ZSTRING   |           | Łańcuch znakowy zakończony zerem                  
+ DATE      |     4     | Data jako 32 bitowa liczba całkowita              
+ BLOB      |           | Memo - łańcuch znakowy zmiennej długoci          
+ BOOL      |     2     | Logiczne prawda/fałsz                             
+ INT16     |     2     | 16 bitowa liczba całkowita                        
+ INT32     |     4     | 32 bitowa liczba całkowita                        
+ FLOAT     |     8     | Liczba zmiennoprzecinkowa podwójnej precyzji
+ TIME      |     4     | Czas jako 32 bitowa liczba całkowita              
+ TIMESTAMP |     8     | Data i czas jako 64 bitowa liczba całkowita       
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Tabela: "GRUPY - grupy towarów/usług
+----------------------------------------------------------------------------------------------------------------------------------
+ Nr |           Nazwa          | Typ pola  |Długoć|                   Opis                  
+----------------------------------------------------------------------------------------------------------------------------------
+  1 | G_ID                     | INT32     |     4 | identyfikator grupy
+  2 | G_PARID                  | INT32     |     4 | identyfikator nadrzędnej grupy
+  3 | G_SYMBOL                 | ZSTRING   |     5 | symbol grupy
+  4 | G_NAZWA                  | ZSTRING   |    31 | nazwa grupy
+  5 | G_NAZWAOBCA              | ZSTRING   |    31 | 
+  6 | G_ECRNR                  | INT16     |     2 | numer grupy w kasie fiskalnej lub wadze
+  7 | G_HASCHILDREN            | INT16     |     2 | 1 jeli ta grupa ma podgrupy
+  8 | G_LFLAG                  | INT32     |     4 | flaga na dodatkowe informacje
+  9 | T_RDZ                    | INT16     |     2 | rodzaj (towar/wyrób/surowiec...)
+ 10 | T_MARUP1                 | FLOAT     |     8 | marża [% ] cena sprzedaży 1 w stosunku do ceny zakupu
+ 11 | T_MARUP2                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 2 do ceny zakupu lub upust ceny 2 do ceny 1
+ 12 | T_MARUP3                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 3 do ceny zakupu lub upust ceny 3 do ceny 1
+ 13 | T_MARUP4                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 4 do ceny zakupu lub upust ceny 4 do ceny 1
+ 14 | G_IMPTS                  | TIMESTAMP |     8 | jeli grupa została zaimportowana(filie) to jest to wartoć pola DOA z fir.gł.
+ 15 | G_SI_WYSYLAJ             | INT16     |     2 | wysyłaj informacje o tej grupie na stronę internetowš
+ 16 | G_SI_DICOSTWYS           | TIMESTAMP |     8 | data i czas ostatniego wysłania informacji o tej grupie na stronę internetowš
+ 17 | DOA                      | TIMESTAMP |     8 | data ostatniej aktualizacji
+ 18 | UZY_ID                   | INT32     |     4 | identyfikator użytkownika
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Tabela: "KTR - kontrahenci
+----------------------------------------------------------------------------------------------------------------------------------
+ Nr |           Nazwa          | Typ pola  |Długoć|                   Opis                  
+----------------------------------------------------------------------------------------------------------------------------------
+  1 | KTR_ID                   | INT32     |     4 | identyfikator kontrahenta
+  2 | KTR_NR                   | INT32     |     4 | nr kolejny kontrahenta
+  3 | KTR_ANALITYKA            | INT32     |     4 | numer analityki dla programu księgowego domylnie = KTR_NR
+  4 | KTR_SKROT                | ZSTRING   |    20 | skrót nazwy kontrahenta
+  5 | KTR_NAZWA                | ZSTRING   |   119 | pełna nazwa kontrahenta
+  6 | KTR_BLOKADA              | INT16     |     2 | 
+  7 | KTR_PARID                | INT32     |     4 | identyfikator innego kontrahenta np. firmy głównej dla filii
+  8 | KTR_TYP                  | INT16     |     2 | typ kontrahenta odbiorca/dostawca/inny
+  9 | KTR_TYP1                 | INT16     |     2 | 
+ 10 | KTR_TYP2                 | INT16     |     2 | 
+ 11 | KTR_TYP3                 | INT16     |     2 | 
+ 12 | KTR_TYP4                 | INT16     |     2 | 
+ 13 | KTR_TYP5                 | INT16     |     2 | 
+ 14 | KTR_RDZ1                 | INT16     |     2 | 
+ 15 | KTR_RDZ2                 | INT16     |     2 | 
+ 16 | KTR_RDZ3                 | INT16     |     2 | 
+ 17 | KTR_RDZ4                 | INT16     |     2 | 
+ 18 | KTR_RDZ5                 | INT16     |     2 | 
+ 19 | KTR_REGION1              | INT16     |     2 | 
+ 20 | KTR_REGION2              | INT16     |     2 | 
+ 21 | KTR_REGION3              | INT16     |     2 | 
+ 22 | KTR_REGION4              | INT16     |     2 | 
+ 23 | KTR_REGION5              | INT16     |     2 | 
+ 24 | KTR_STORYZ               | INT16     |     2 | stopień ryzyka (ze słownika)
+ 25 | KTR_OCENA                | INT16     |     2 | ocena kontrahenta (ze słownika)
+ 26 | KTR_LFLAG                | INT32     |     4 | różne dodatkowe ustawienia
+ 27 | KTR_OSOPRO               | INT32     |     4 | osoba prowadzšca kontrahenta
+ 28 | KTR_OSOBPRYW             | INT16     |     2 | kontrahent jest osobš prywatnš
+ 29 | KTR_NAZWISKO             | ZSTRING   |    23 | nazwisko jeli jest osobš prywatnš
+ 30 | KTR_IMIE                 | ZSTRING   |    15 | imię jeli jest osobš prywatnš
+ 31 | KTR_MIEJSC               | ZSTRING   |    25 | nazwa miejscowoci
+ 32 | KTR_ULALPL               | ZSTRING   |     3 | ul. Al. pl.
+ 33 | KTR_ULICA                | ZSTRING   |    35 | ulica nr domu nr lokalu
+ 34 | KTR_KODPOCZT             | ZSTRING   |     6 | kod pocztowy
+ 35 | KTR_POCZTA               | ZSTRING   |    25 | 
+ 36 | KTR_ADRES                | ZSTRING   |    95 | 
+ 37 | KTR_ADK                  | INT16     |     2 | kontrahent ma adres do korespondencji i jest on inny niż jego adres
+ 38 | KTR_WOJ                  | ZSTRING   |    20 | 
+ 39 | KRAJ_NAZWA               | ZSTRING   |    23 | 
+ 40 | KRAJ_NRKIER              | ZSTRING   |     7 | kierunkowy numer telefonu do kraju
+ 41 | KTR_WWW                  | ZSTRING   |    39 | adres internetowy strony kontrahenta
+ 42 | KTR_EMAIL                | ZSTRING   |    63 | adres email kontrahenta
+ 43 | KTR_NWSEREMAIL           | INT16     |     2 | nie wysyłać seryjnych emaili
+ 44 | KTR_DOKTYPEKS            | INT16     |     2 | w jaki sposób eksportować dokumenty kontrahentowi -1 nie,
+ 45 | KTR_NIP                  | ZSTRING   |    16 | 
+ 46 | KTR_NIPBS                | ZSTRING   |    12 | 
+ 47 | KTR_PLAVAT               | INT16     |     2 | kontrahent jest płatnikiem VAT
+ 48 | KTR_UE                   | INT16     |     2 | kontrahent unijny
+ 49 | KTR_REGON                | ZSTRING   |    14 | 
+ 50 | KTR_BANK                 | ZSTRING   |    41 | nazwa banku
+ 51 | KTR_NRRACH               | ZSTRING   |    41 | numer rachunku bankowego
+ 52 | KTR_NRRACH2              | ZSTRING   |    41 | 
+ 53 | KTR_DATAPK               | TIMESTAMP |     8 | data pierwszego kontaktu
+ 54 | WAL_SYM                  | ZSTRING   |     3 | waluta w której prowadzi się rozliczenia z kontrahentem
+ 55 | KTR_OUPUST               | FLOAT     |     8 | upust dla tego kontrahenta w procentach
+ 56 | KTR_OGRPCEN              | INT16     |     2 | grupa cenowa
+ 57 | KTR_OPLATDNI             | INT16     |     2 | termin płatnoci w dniach dla odbiorcy
+ 58 | KTR_OPLATSPOSOB          | INT16     |     2 | sposób płatnoci dla odbiorcy
+ 59 | KTR_OKREDYT              | FLOAT     |     8 | kredyt jaki przysługuje odbiorcy
+ 60 | KTR_OBLOKADA             | INT16     |     2 | dalsze wystawianie rachunków terminowych zostaje zablokowane
+ 61 | KTR_OWYSWPTERM           | INT16     |     2 | wywietlaj informacje o przekroczeniu terminu płatnoci
+ 62 | KTR_OBLOKPTERM           | INT16     |     2 | blokada sprzedaży jeli ma przeterminowane faktury
+ 63 | KTR_ONAZWIMIE            | ZSTRING   |    39 | nazwisko i imię odbierajšcego dokument
+ 64 | KTR_OTRANSRDZ            | INT16     |     2 | rodzaj transportu dla dokumentów odbiorcy
+ 65 | KTR_OCENBRU              | INT16     |     2 | stosowanie cen brutto dla kontrahenta(0 - jak dokument, 1 - brutto, 2 - netto
+ 66 | KTR_OILOSCNZFDM          | INT16     |     2 | iloć niezafakturowanych dokumentów magazynowych
+ 67 | KTR_OILOSCDNINZFDM       | INT16     |     2 | iloć dni przez którš kontrahent może mieć niezafakturowane dok. magazynowe
+ 68 | BNK_ID                   | INT32     |     4 | identyfikator banku firmy drukowanego dla tego kontrahenta
+ 69 | KTR_DPLATDNI             | INT16     |     2 | 
+ 70 | KTR_DPLATSPOSOB          | INT16     |     2 | sposób płatnoci dla odbiorcy
+ 71 | KTR_DKREDYT              | FLOAT     |     8 | 
+ 72 | KTR_DWYSWPTERM           | INT16     |     2 | 
+ 73 | KTR_NRKIER               | ZSTRING   |     7 | kierunkowy numer telefonu
+ 74 | KTR_NRKONCFARM           | ZSTRING   |    31 | 
+ 75 | KTR_FARMOBDYS            | INT16     |     2 | farmaceutyczny obszar dystrybucji
+ 76 | KTR_UTEKST1              | ZSTRING   |    31 | pole znakowe użytkownika nr 1
+ 77 | KTR_UTEKST2              | ZSTRING   |    31 | pole znakowe użytkownika nr 2
+ 78 | KTR_UDATA1               | TIMESTAMP |     8 | data użytkownika 1
+ 79 | KTR_UKWOTA1              | FLOAT     |     8 | kwota użytkownika 1 np. dla dokumentów seryjnych
+ 80 | KTR_DOKSER               | INT16     |     2 | wystawiaj dokumenty seryjne dla kontrahenta
+ 81 | KTR_UWAGI                | ZSTRING   |   239 | 
+ 82 | MODF                     | INT16     |     2 | modified flag - do wymuszania, że rekord został zmodyfikowany
+ 83 | PA_DATA                  | TIMESTAMP |     8 | data pierwszej aktualizacji (dodania informacji)
+ 84 | PA_UZY_ID                | INT32     |     4 | identyfikator uzytkownika, który pierwszy wpisał informację
+ 85 | OLDTEL                   | ZSTRING   |    25 | numery telfonów ze starej FAMY
+ 86 | OLDFAKS                  | ZSTRING   |    25 | numery faksów ze starej FAMY
+ 87 | KTR_FAKSTID              | ZSTRING   |    23 | identyfikator faksu
+ 88 | KTR_SI_MOZEZAM           | INT16     |     2 | może wprowadzać zamówienia na stronie internetowej
+ 89 | KTR_SI_HASLO             | ZSTRING   |    10 | hasło do składania zamówień na stronie
+ 90 | DOA                      | TIMESTAMP |     8 | data ostatniej aktualizacji
+ 91 | UZY_ID                   | INT32     |     4 | identyfikator użytkownika
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Tabela: "TOWARY - kartoteka towarów, usług, wyrobów, surowców...
+----------------------------------------------------------------------------------------------------------------------------------
+ Nr |           Nazwa          | Typ pola  |Długoć|                   Opis                  
+----------------------------------------------------------------------------------------------------------------------------------
+  1 | T_ID                     | INT32     |     4 | identyfikator towaru (wyrobu/surowca)
+  2 | T_RDZ                    | INT16     |     2 | rodzaj (towar/wyrób/surowiec/usługa...)
+  3 | G_ID                     | INT32     |     4 | identyfikator grupy
+  4 | G_PARID                  | INT32     |     4 | identyfikator nadrzędnej grupy
+  5 | T_INDEKS                 | ZSTRING   |    20 | indeks towaru/wyrobu/surowca...
+  6 | T_NAZWA                  | ZSTRING   |    60 | nazwa towaru/usługi/wyrobu/surowca...
+  7 | T_ATR1_SORT              | INT16     |     2 | 
+  8 | T_ATR2_SORT              | INT16     |     2 | sortowanie po atrybucie 2(rozmiary) XS, S, M, L, XL ...
+  9 | T_ATR1                   | ZSTRING   |    25 | pierwszy atrybut towaru np. kolor
+ 10 | T_ATR2                   | ZSTRING   |    12 | drugi atrybut towaru np. rozmiar
+ 11 | T_NAZWAOBCA              | ZSTRING   |    60 | obca nazwa towaru(np. w innym języku)
+ 12 | T_PLU                    | INT16     |     2 | numer towaru dla kasy fiskalnej lub wagi
+ 13 | T_LFLAG                  | INT32     |     4 | 
+ 14 | T_BLOKADA                | INT16     |     2 | blokada towaru
+ 15 | BARKOD                   | ZSTRING   |    13 | 
+ 16 | KTR_ID                   | INT32     |     4 | identyfikator kontrahenta-dostawcy
+ 17 | KTR_SKROT                | ZSTRING   |    20 | skrót nazwy kontrahenta
+ 18 | T_INDOST                 | ZSTRING   |    20 | indeks towarowy dostawcy
+ 19 | T_POLOZMAG               | ZSTRING   |     7 | położenie towaru w magazynie
+ 20 | T_DRUGPOL                | ZSTRING   |     7 | numer drugpol wraz z dwuznakowym rozszerzeniem reprezentujšcym opakowanie
+ 21 | T_GWARILMIES             | INT16     |     2 | iloć miesięcy gwarancji, 0 - na towar nie ma gwarancji
+ 22 | T_MANRSERYJNE            | INT16     |     2 | towar ma nr seryjne
+ 23 | SWW                      | ZSTRING   |     8 | symbol SWW/KU
+ 24 | PKWIU                    | ZSTRING   |    14 | 
+ 25 | T_ZAOKCENY               | INT16     |     2 | do ilu miejsc po przecinku zaokršglać ceny
+ 26 | T_CENAN1                 | FLOAT     |     8 | 1 cena sprzedaży netto
+ 27 | T_CENAN2                 | FLOAT     |     8 | 2 cena sprzedaży netto
+ 28 | T_CENAN3                 | FLOAT     |     8 | 3 cena sprzedaży netto
+ 29 | T_CENAN4                 | FLOAT     |     8 | 4 cena sprzedaży netto
+ 30 | T_CENAB1                 | FLOAT     |     8 | 1 cena sprzedaży brutto
+ 31 | T_CENAB2                 | FLOAT     |     8 | 2 cena sprzedaży brutto
+ 32 | T_CENAB3                 | FLOAT     |     8 | 3 cena sprzedaży brutto
+ 33 | T_CENAB4                 | FLOAT     |     8 | 4 cena sprzedaży brutto
+ 34 | T_NRCENYPROM             | INT16     |     2 | numer ceny promocyjnej 0=brak ceny promocyjnej
+ 35 | STVAT                    | INT16     |     2 | numer stawki VAT
+ 36 | SVSYM                    | ZSTRING   |     4 | symbol stawki VAT zapisana jako tekst  '22', '7', '0', 'zw' ...
+ 37 | T_CENAWN                 | FLOAT     |     8 | walutowa cena sprzedaży netto
+ 38 | T_CENAWB                 | FLOAT     |     8 | walutowa cena sprzedaży brutto
+ 39 | WAL_SYM                  | ZSTRING   |     3 | 
+ 40 | T_MARUP1                 | FLOAT     |     8 | marża [% ] cena sprzedaży 1 w stosunku do ceny zakupu
+ 41 | T_MARUP2                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 2 do ceny zakupu lub upust ceny 2 do ceny 1
+ 42 | T_MARUP3                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 3 do ceny zakupu lub upust ceny 3 do ceny 1
+ 43 | T_MARUP4                 | FLOAT     |     8 | marża/upust [%] cena sprzedaży 4 do ceny zakupu lub upust ceny 4 do ceny 1
+ 44 | T_CENAZON                | FLOAT     |     8 | ostatnia cena zakupu netto (cena wytworzenia netto - dla wyrobu)
+ 45 | T_CENAZOB                | FLOAT     |     8 | ostatnia cena zakupu brutto (cena wytworzenia netto - dla wyrobu)
+ 46 | T_CENAZPN                | FLOAT     |     8 | poprzednia 'ostatnia' cena zakupu netto
+ 47 | T_CENAZSN                | FLOAT     |     8 | rednia ważona cena zakupu netto
+ 48 | T_CENAZSB                | FLOAT     |     8 | rednia ważona cena zakupu brutto
+ 49 | T_CENAZWN                | FLOAT     |     8 | walutowa cena zakupu netto
+ 50 | T_CENAZWB                | FLOAT     |     8 | walutowa cena zakupu brutto
+ 51 | D_ID                     | INT32     |     4 | 
+ 52 | D_DATAP                  | DATE      |     4 | data przyjęcia dokumentu który spowodował ostatniš zmianę ceny - denormalizacja
+ 53 | T_CLOPRO                 | INT32     |     4 | stawka celna w %
+ 54 | T_FZMCENY                | INT16     |     2 | flaga zmiany ceny
+ 55 | T_PROGZMCENY             | FLOAT     |     8 | próg zmiany ceny
+ 56 | T_FZMCENYPRZL            | INT16     |     2 | 
+ 57 | T_ILPREF                 | FLOAT     |     8 | iloć preferowana, dla usługi jest to iloć w jednostce miary np: 5gdz
+ 58 | T_ZAPASMIN               | FLOAT     |     8 | zapas minimalny
+ 59 | T_ZAPASMAX               | FLOAT     |     8 | zapas maksymalny
+ 60 | T_POLTID                 | INT32     |     4 | identyfikator połšczonej pozycji z kartoteki towarów (np. opakowania)
+ 61 | T_POLTILOSC              | FLOAT     |     8 | iloć połšczonego towaru (opakowania)
+ 62 | JM                       | ZSTRING   |     7 | jednostka miary(towaru/wyrobu/usługi)
+ 63 | JM_MPP                   | INT16     |     2 | ile miejsc po przecinku dla tej jednostki miary jest proponowane
+ 64 | T_JM1                    | ZSTRING   |     7 | dodatkowa jednostka miary np. opakowanie
+ 65 | T_JM2                    | ZSTRING   |     7 | 
+ 66 | T_JM3                    | ZSTRING   |     7 | 
+ 67 | T_ILOSC_JM1              | FLOAT     |     8 | iloć w dodatkowej jednostce miary
+ 68 | T_ILOSC_JM2              | FLOAT     |     8 | 
+ 69 | T_ILOSC_JM3              | FLOAT     |     8 | 
+ 70 | T_KK_JM1                 | ZSTRING   |    13 | kod kreskowy dla iloci przelicznikowej 1
+ 71 | T_KK_JM2                 | ZSTRING   |    13 | kod kreskowy dla iloci przelicznikowej 2
+ 72 | T_KK_JM3                 | ZSTRING   |    13 | kod kreskowy dla iloci przelicznikowej 3
+ 73 | T_WAGA                   | FLOAT     |     8 | waga towaru w jednostce miary w kg
+ 74 | T_FHDI                   | INT16     |     2 | 1-musi być umieszczany na handlowym dokumencie identyfikacyjnym, 2-wyrób własny
+ 75 | T_STAN                   | FLOAT     |     8 | stan magazynu/ów
+ 76 | T_STAN01                 | FLOAT     |     8 | stan magazynu nr 1
+ 77 | T_STAN02                 | FLOAT     |     8 | 
+ 78 | T_STAN03                 | FLOAT     |     8 | 
+ 79 | T_STAN04                 | FLOAT     |     8 | 
+ 80 | T_STAN05                 | FLOAT     |     8 | 
+ 81 | T_STAN06                 | FLOAT     |     8 | 
+ 82 | T_STAN07                 | FLOAT     |     8 | 
+ 83 | T_STAN08                 | FLOAT     |     8 | 
+ 84 | T_STAN09                 | FLOAT     |     8 | 
+ 85 | T_STAN10                 | FLOAT     |     8 | 
+ 86 | T_STAN11                 | FLOAT     |     8 | 
+ 87 | T_STAN12                 | FLOAT     |     8 | 
+ 88 | T_STAN13                 | FLOAT     |     8 | 
+ 89 | T_STAN14                 | FLOAT     |     8 | 
+ 90 | T_STAN15                 | FLOAT     |     8 | 
+ 91 | T_STAN16                 | FLOAT     |     8 | 
+ 92 | T_STAN17                 | FLOAT     |     8 | 
+ 93 | T_STAN18                 | FLOAT     |     8 | 
+ 94 | T_STAN19                 | FLOAT     |     8 | 
+ 95 | T_STAN20                 | FLOAT     |     8 | 
+ 96 | T_STAN21                 | FLOAT     |     8 | 
+ 97 | T_STAN22                 | FLOAT     |     8 | 
+ 98 | T_STAN23                 | FLOAT     |     8 | 
+ 99 | T_STAN24                 | FLOAT     |     8 | 
+100 | T_STAN25                 | FLOAT     |     8 | 
+101 | T_STAN26                 | FLOAT     |     8 | 
+102 | T_STAN27                 | FLOAT     |     8 | 
+103 | T_STAN28                 | FLOAT     |     8 | 
+104 | T_STAN29                 | FLOAT     |     8 | 
+105 | T_STAN30                 | FLOAT     |     8 | 
+106 | T_STAN31                 | FLOAT     |     8 | 
+107 | T_STAN32                 | FLOAT     |     8 | 
+108 | T_STAN33                 | FLOAT     |     8 | 
+109 | T_STAN34                 | FLOAT     |     8 | 
+110 | T_STAN35                 | FLOAT     |     8 | 
+111 | T_REZERWACJA             | FLOAT     |     8 | rezerwacja we wszystkich magazynach
+112 | T_UTEKST1                | ZSTRING   |    23 | pierwsze pole tekstowe użytkownika
+113 | T_UWSPOL1                | FLOAT     |     8 | pierwsze pole float użytkownika np. jaki współczynnik
+114 | T_UWAGI                  | ZSTRING   |    60 | 
+115 | T_IMPTS                  | TIMESTAMP |     8 | jeli towar został zaimportowany(filie) to jest to wartoć pola DOA z fir.gł.
+116 | T_SI_WYSYLAJ             | INT16     |     2 | wysyłaj informacje o tym towarze na stronę internetowš
+117 | T_SI_DICOSTWYS           | TIMESTAMP |     8 | data i czas ostatniego wysłania informacji o tym towarze na stronę internetowš
+118 | DOA                      | TIMESTAMP |     8 | data ostatniej aktualizacji danych
+119 | UZY_ID                   | INT32     |     4 | identyfikator użytkownika
+120 | INSTS                    | TIMESTAMP |     8 | data i czas (timestamp) wstawienia wiersza do tabeli
+121 | INSUID                   | INT32     |     4 | identyfikator użytkownika, który wstawił wiersz
+----------------------------------------------------------------------------------------------------------------------------------
+
+ Tabela: "TOWZDJ - zdjęcia/obrazki towarów
+----------------------------------------------------------------------------------------------------------------------------------
+ Nr |           Nazwa          | Typ pola  |Długoć|                   Opis                  
+----------------------------------------------------------------------------------------------------------------------------------
+  1 | T_ID                     | INT32     |     4 | identyfikator towaru (wyrobu/surowca)
+  2 | TZ_NR                    | INT16     |     2 | numer kolejny zdjęcia.obrazu towaru
+  3 | TZ_FILENAME              | ZSTRING   |   159 | 
+  4 | TZ_SI_WYSYLAJ            | INT16     |     2 | wysyłaj to zdjęcie na stronę internetowš
+  5 | TZ_SI_DICOSTWYS          | TIMESTAMP |     8 | data i czas ostatniego wysłania pliku zdjęcia na stronę internetowš
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+TABELE TYLKO NA STRONIE
+-- 
+-- Struktura tabeli dla  `ZAMN`
+-- 
+
+  `ZN_ID`		- identyfikator nagłówka zamówienia(nadawany automatycznie)
+  `M_ID`			- identyfikator(numer) magazynu do którego jest składane zamówienie
+  `ZN_DATA`		- data zamówienia
+  `KTR_ID`		- identyfikator kontrahenta, który złożył zamówienie(relacja z tabelš KTR)
+  `D_REAL_DT_ID`		- identyfikator typu dokumentu, który ma zostać wystawiony, faktura vat, czy paragon (może być 0)
+  `D_REAL_OD`		- w jaki dzień i w jakich godzinach dostawa(realizacja)
+  `D_REAL_DO`
+  `D_TRANSRDZ`		- jaki transport
+  `ZN_UWAGI`		- uwagi
+  `ZN_DOSTAWA_NAZWA`	- dostawa nazwa kontrahenta(te dane tylko jeli sš inne niż dane podstawowe kontrahenta)
+  `ZN_DOSTAWA_ADRES` 	- dostawa adres
+  `ZN_DOSTAWA_NIP`	- dostawa nip
+  `ZN_ZACZYT` 		- znacznik, czy nagłówek został zaczytany przez programa FaMa
+  `DICOM` 		- data i czas ostatniej modyfikacji(nadawane automatycznie)
+  `UOA`			- nieużywane
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktura tabeli dla  `ZAMP`
+-- 
+
+  `ZP_ID` 		- identyfikator pozycji zamówienia(nadawany automatycznie)
+  `ZN_ID` 		- identyfikator nagłówka zamówienia(relacja z tabelš ZAMN)
+  `T_ID`			- identyfikator towaru(relacja z tabelš TOWARY)
+  `ZP_ILOSC` 		- iloć zamówiona
+  `ZP_CENAN` 		- cena bez podatku zamówionego towaru
+  `ZP_CENAB` 		- cena z podatkiem zamówionego towaru
+  `ZP_ZACZYT` 		- znacznik, czy pozycja została zaczytana przez program FaMa
+  `DICOM` 		- data i czas ostatniej modyfikacji(nadawane automatycznie)
