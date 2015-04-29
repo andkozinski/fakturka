@@ -33,8 +33,7 @@ public class Produkt extends AbstractEntity implements Serializable {
       private Long idGrupy;
       private String indeks;
       private String nazwaProduktu;
-      
-      private Integer nrDlaKasyFiskalnej;
+            private Integer nrDlaKasyFiskalnej;
 
       /**
        * Get the value of nrDlaKasyFiskalnej
