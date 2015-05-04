@@ -1,4 +1,4 @@
-/*
+/*  
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,12 +6,20 @@
 package fakturka.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import sample.jee.shop.model.AbstractEntity;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -21,117 +29,86 @@ import sample.jee.shop.model.AbstractEntity;
 @Table(name = "Produkt")
 public class Produkt extends AbstractEntity implements Serializable {
 
+      public Produkt() {
+      }
+
       @Override
       protected Object getBusinessKey() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return indeks;
       }
 
       @Id
       @GeneratedValue(strategy = GenerationType.AUTO)
+      @Column(updatable = false)
       private Long id;
-      private Integer produkt_rodzaj;
-      private Long idGrupy;
+
+      @Enumerated(EnumType.STRING)
+      @Column(name = "produktTyp")
+      private ProduktTyp produktTyp;
+
+      @ManyToOne
+      @JoinColumn(name = "idKategori")
+      private Kategoria kategoria;
+
+      @Column(name = "indeks", length = 32, nullable = false, unique = true)
       private String indeks;
       private String nazwaProduktu;
-            private Integer nrDlaKasyFiskalnej;
+      private Integer nrDlaKasyFiskalnej;
 
-      /**
-       * Get the value of nrDlaKasyFiskalnej
-       *
-       * @return the value of nrDlaKasyFiskalnej
-       */
+      @Size(max = 200, message = "{constraint.string.length.toolong}")
+      @Column(name = "opis", length = 1800)
+      private String opis;
+
+      public ProduktTyp getProduktTyp() {
+            return produktTyp;
+      }
+
+      public void setProduktTyp(ProduktTyp produktTyp) {
+            this.produktTyp = produktTyp;
+      }
+
+      public Kategoria getKategoria() {
+            return kategoria;
+      }
+
+      public void setKategoria(Kategoria kategoria) {
+            this.kategoria = kategoria;
+      }
+
+      public String getOpis() {
+            return opis;
+      }
+
+      public void setOpis(String opis) {
+            this.opis = opis;
+      }
+
       public Integer getNrDlaKasyFiskalnej() {
             return nrDlaKasyFiskalnej;
       }
 
-      /**
-       * Set the value of nrDlaKasyFiskalnej
-       *
-       * @param nrDlaKasyFiskalnej new value of nrDlaKasyFiskalnej
-       */
       public void setNrDlaKasyFiskalnej(Integer nrDlaKasyFiskalnej) {
             this.nrDlaKasyFiskalnej = nrDlaKasyFiskalnej;
       }
 
-
-      /**
-       * Get the value of nazwaProduktu
-       *
-       * @return the value of nazwaProduktu
-       */
       public String getNazwaProduktu() {
             return nazwaProduktu;
       }
 
-      /**
-       * Set the value of nazwaProduktu
-       *
-       * @param nazwaProduktu new value of nazwaProduktu
-       */
       public void setNazwaProduktu(String nazwaProduktu) {
             this.nazwaProduktu = nazwaProduktu;
       }
 
-      /**
-       * Get the value of indeks
-       *
-       * @return the value of indeks
-       */
       public String getIndeks() {
             return indeks;
       }
 
-      /**
-       * Set the value of indeks
-       *
-       * @param indeks new value of indeks
-       */
       public void setIndeks(String indeks) {
             this.indeks = indeks;
       }
 
-      /**
-       * Get the value of idGrupy
-       *
-       * @return the value of IdGrupy
-       */
-      public Long getidGrupy() {
-            return idGrupy;
-      }
-
-      /**
-       * Set the value of idGrupy
-       *
-       * @param idGrupy new value of IdGrupy
-       */
-      public void setidGrupy(Long idGrupy) {
-            this.idGrupy = idGrupy;
-      }
-
-      /**
-       * Get the value of produkt_rodzaj
-       *
-       * @return the value of produkt_rodzaj
-       */
-      public Integer getProdukt_rodzaj() {
-            return produkt_rodzaj;
-      }
-
-      /**
-       * Set the value of produkt_rodzaj
-       *
-       * @param produkt_rodzaj new value of produkt_rodzaj
-       */
-      public void setProdukt_rodzaj(Integer produkt_rodzaj) {
-            this.produkt_rodzaj = produkt_rodzaj;
-      }
-
+      @Override
       public Long getId() {
             return id;
       }
-
-      public void setId(Long id) {
-            this.id = id;
-      }
-
 }

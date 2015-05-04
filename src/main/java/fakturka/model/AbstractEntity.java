@@ -1,4 +1,4 @@
-package sample.jee.shop.model;
+package fakturka.model;
 
 import java.io.Serializable;
 import java.util.Date;
