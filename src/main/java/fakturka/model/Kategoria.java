@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,6 +28,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "kategoria")
+@XmlRootElement
 public class Kategoria extends AbstractEntity implements Serializable {
 
       public Kategoria() {
@@ -46,6 +49,7 @@ public class Kategoria extends AbstractEntity implements Serializable {
       @OneToMany(mappedBy = "kategoria")
       List<Produkt> listaProduktow = new ArrayList<>();
 
+      @XmlTransient
       public List<Produkt> getListaProduktow() {
             return listaProduktow;
       }

@@ -1,1 +1,9 @@
+fakturka/model/AbstractEntity.class
+fakturka/service/AbstractFacade.class
+fakturka/model/PaginatedListWrapper.class
 fakturka/model/Produkt.class
+fakturka/model/Kategoria.class
+fakturka/service/ApplicationConfig.class
+fakturka/model/ProduktTyp.class
+fakturka/service/KategoriaFacadeREST.class
+fakturka/service/ProduktFacadeREST.class

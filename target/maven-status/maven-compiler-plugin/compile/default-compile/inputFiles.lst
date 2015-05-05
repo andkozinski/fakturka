@@ -1,1 +1,9 @@
 /home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/model/Produkt.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/model/ProduktTyp.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/service/KategoriaFacadeREST.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/service/AbstractFacade.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/model/Kategoria.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/service/ApplicationConfig.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/model/PaginatedListWrapper.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/model/AbstractEntity.java
+/home/andrew/Projekty Jee/fakturka-master/src/main/java/fakturka/service/ProduktFacadeREST.java
